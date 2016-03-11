@@ -1,0 +1,490 @@
+[
+{
+  "fields": {
+    "hunger_level": 0,
+    "anxiety_level": 0,
+    "chest_pain_level": 0,
+    "stomach_level": 0,
+    "user": 1,
+    "nausea_level": 0,
+    "body_ache_level": 0
+  },
+  "model": "ipcms.patienthealthconditions",
+  "pk": 1
+},
+{
+  "fields": {
+    "current_health_conditions": 1,
+    "resolved": 0,
+    "doctor": 1,
+    "allergies": "None",
+    "pain_level": 10,
+    "user": 1,
+    "date": "2015-11-17 16:51",
+    "medical_conditions": "None"
+  },
+  "model": "ipcms.patientappt",
+  "pk": 1
+},
+{
+  "fields": {
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": true,
+    "is_staff": true,
+    "last_login": "2015-11-17T23:58:43.860Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$GMXhgP2xWnjY$/BTvmh97ASo35vVtK3S9HDtXAJIITJPPY1NZTkfZ+R0=",
+    "email": "admin@admin.com",
+    "date_joined": "2015-11-17T23:28:55.861Z"
+  },
+  "model": "auth.user",
+  "pk": 1
+},
+{
+  "fields": {
+    "username": "patient1@patient1.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:56:22.731Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$k3lfkMuhwIxY$6vPiia1aGsTdp2G0yPr+OKSADbfftG7dGuefvR2GOEk=",
+    "email": "",
+    "date_joined": "2015-11-17T23:29:19.938Z"
+  },
+  "model": "auth.user",
+  "pk": 2
+},
+{
+  "fields": {
+    "username": "patient2@patient2.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:30:28.666Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$QnmjHJE3mG6G$rBAw26ZXC3LImLBlDlkznpsC9EDJwv6YPNLjf6NFAW4=",
+    "email": "",
+    "date_joined": "2015-11-17T23:30:23.580Z"
+  },
+  "model": "auth.user",
+  "pk": 3
+},
+{
+  "fields": {
+    "username": "patient3@patient3.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:31:20.508Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$2ldW1nFYtrQS$85CxE+zT0ITuR9PVsQov8msahmASym8+cUL6KDbu1v4=",
+    "email": "",
+    "date_joined": "2015-11-17T23:31:16.980Z"
+  },
+  "model": "auth.user",
+  "pk": 4
+},
+{
+  "fields": {
+    "username": "patient4@patient4.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:32:31.127Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$8yxBFu4dlBds$sEOEkvHvFIiqkUOjPI0E0EUgetD4GmLjakJwlpTqaPQ=",
+    "email": "",
+    "date_joined": "2015-11-17T23:32:26.134Z"
+  },
+  "model": "auth.user",
+  "pk": 5
+},
+{
+  "fields": {
+    "username": "nurse1@nurse1.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:37:05.119Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$9JJ7H3ti4usv$JcTSRuEJC+8Yq3tyAnc2RBIgXwfArFp+KnecabaHLlE=",
+    "email": "",
+    "date_joined": "2015-11-17T23:35:17.073Z"
+  },
+  "model": "auth.user",
+  "pk": 6
+},
+{
+  "fields": {
+    "username": "doctor1@doctor1.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:56:37.799Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$1uHOT3jOjDuy$YY2sDauxHIws8JCydVnrsYzjVOgBHONHI1mrbxzJXVs=",
+    "email": "",
+    "date_joined": "2015-11-17T23:35:27.748Z"
+  },
+  "model": "auth.user",
+  "pk": 7
+},
+{
+  "fields": {
+    "username": "lab1@lab1.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:50:31.497Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$dakIOT2naCuT$85KTp5qLfHrokV9aPXQuEQBz+Vx/HkEeL0rIqpFxrs4=",
+    "email": "",
+    "date_joined": "2015-11-17T23:35:36.250Z"
+  },
+  "model": "auth.user",
+  "pk": 8
+},
+{
+  "fields": {
+    "username": "hsp1@hsp1.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-11-17T23:42:23.015Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$yGsl2nqVXbaj$X7iepBVJ2wkOakI8Ps+NiHS9qTW+i71vSka6by7qNn4=",
+    "email": "",
+    "date_joined": "2015-11-17T23:42:03.952Z"
+  },
+  "model": "auth.user",
+  "pk": 9
+},
+{
+  "fields": {
+    "username": "hsp2@hsp2.com",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": null,
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$uhiSvkpxywYp$8wJBoqobYxeAhhSTlwWb3p+F1viuIkFjPH83eJ5A/Bk=",
+    "email": "",
+    "date_joined": "2015-11-17T23:42:57.857Z"
+  },
+  "model": "auth.user",
+  "pk": 10
+},
+{
+  "fields": {
+    "expire_date": "2015-12-01T23:58:43.864Z",
+    "session_data": "MmRiNDg5NzNhNTM3YWE0YTMwY2YwYjQ5MGIzZmQ3ZWQ5NmFjN2IzYjp7Il9hdXRoX3VzZXJfaGFzaCI6ImQ3ZmFlZWRjYTU4NDE5NWYwNGNhYWU1MDA3OGM3MTJmMjQ5YzcwMDEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+  },
+  "model": "sessions.session",
+  "pk": "b9hyg4c9qretjts122kqskshnpzxoubl"
+},
+{
+  "fields": {
+    "expire_date": "2015-12-01T23:41:32.350Z",
+    "session_data": "MmRiNDg5NzNhNTM3YWE0YTMwY2YwYjQ5MGIzZmQ3ZWQ5NmFjN2IzYjp7Il9hdXRoX3VzZXJfaGFzaCI6ImQ3ZmFlZWRjYTU4NDE5NWYwNGNhYWU1MDA3OGM3MTJmMjQ5YzcwMDEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+  },
+  "model": "sessions.session",
+  "pk": "lhkjc5hqknec53lxa3b5q6dm7mypo180"
+},
+{
+  "fields": {
+    "date_created": "2015-11-17 23:34:16.862502",
+    "fill_from_application": 1,
+    "user": [
+      "patient1@patient1.com"
+    ],
+    "alertSent": 1,
+    "approved": 1
+  },
+  "model": "ipcms.patient",
+  "pk": 1
+},
+{
+  "fields": {
+    "date_created": "9-20-1995",
+    "fill_from_application": 2,
+    "user": [
+      "patient2@patient2.com"
+    ],
+    "alertSent": 0,
+    "approved": 1
+  },
+  "model": "ipcms.patient",
+  "pk": 2
+},
+{
+  "fields": {
+    "date_created": "9-20-1995",
+    "fill_from_application": 3,
+    "user": [
+      "patient3@patient3.com"
+    ],
+    "alertSent": 0,
+    "approved": 1
+  },
+  "model": "ipcms.patient",
+  "pk": 3
+},
+{
+  "fields": {
+    "date_created": "9-20-1995",
+    "fill_from_application": 4,
+    "user": [
+      "patient4@patient4.com"
+    ],
+    "alertSent": 0,
+    "approved": 1
+  },
+  "model": "ipcms.patient",
+  "pk": 4
+},
+{
+  "fields": {
+    "phone_number": "+14804528825",
+    "insurance_policy_number": 123402545345,
+    "first_name": "Johnthan",
+    "last_name": "Larsen",
+    "ssn": 600594850,
+    "DOB": "02/20/1995",
+    "gender": "male",
+    "age": 10,
+    "address": "1234 E Luarel Dt.",
+    "data_sent": 1,
+    "insurance_provider": "Allstate",
+    "allergies": "Cats",
+    "race": "white",
+    "medications": "Xanax",
+    "user": [
+      "patient1@patient1.com"
+    ],
+    "income": "$0-$10,000",
+    "email_address": "patient1@patient1.com"
+  },
+  "model": "ipcms.temppatientdata",
+  "pk": 1
+},
+{
+  "fields": {
+    "phone_number": "+14804528825",
+    "insurance_policy_number": 23492524534,
+    "first_name": "Rhonda",
+    "last_name": "Rousey",
+    "ssn": 600495848,
+    "DOB": "02/30/1998",
+    "gender": "female",
+    "age": 25,
+    "address": "4543 e lemon st.",
+    "data_sent": 1,
+    "insurance_provider": "state farm",
+    "allergies": "Pollen",
+    "race": "american_indian_alaskan_native",
+    "medications": "zyrtec",
+    "user": [
+      "patient2@patient2.com"
+    ],
+    "income": "$10,001-$30,000",
+    "email_address": "patient2@patient2.com"
+  },
+  "model": "ipcms.temppatientdata",
+  "pk": 2
+},
+{
+  "fields": {
+    "phone_number": "+14804528825",
+    "insurance_policy_number": 34342423,
+    "first_name": "Mitchell",
+    "last_name": "Testchner",
+    "ssn": 600594484,
+    "DOB": "01/04/1988",
+    "gender": "other",
+    "age": 35,
+    "address": "4045 e johnson st.",
+    "data_sent": 1,
+    "insurance_provider": "Progressive",
+    "allergies": "None",
+    "race": "hawaiian",
+    "medications": "None",
+    "user": [
+      "patient3@patient3.com"
+    ],
+    "income": "$30,001-$60,000",
+    "email_address": "patient3@patient3.com"
+  },
+  "model": "ipcms.temppatientdata",
+  "pk": 3
+},
+{
+  "fields": {
+    "phone_number": "+14804528825",
+    "insurance_policy_number": 34534536346346,
+    "first_name": "Dustin",
+    "last_name": "Hari",
+    "ssn": 344593049,
+    "DOB": "06/07/1944",
+    "gender": "prefer not to say",
+    "age": 45,
+    "address": "932 w parkway blvd",
+    "data_sent": 1,
+    "insurance_provider": "State Farm",
+    "allergies": "Mold",
+    "race": "black",
+    "medications": "addy",
+    "user": [
+      "patient4@patient4.com"
+    ],
+    "income": "$60,001-$85,000",
+    "email_address": "patient4@patient4.com"
+  },
+  "model": "ipcms.temppatientdata",
+  "pk": 4
+},
+{
+  "fields": {
+    "role": "patient",
+    "user": [
+      "patient1@patient1.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 1
+},
+{
+  "fields": {
+    "role": "doctor",
+    "user": [
+      "doctor1@doctor1.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 2
+},
+{
+  "fields": {
+    "role": "nurse",
+    "user": [
+      "nurse1@nurse1.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 3
+},
+{
+  "fields": {
+    "role": "lab",
+    "user": [
+      "lab1@lab1.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 4
+},
+{
+  "fields": {
+    "role": "staff",
+    "user": [
+      "hsp1@hsp1.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 5
+},
+{
+  "fields": {
+    "role": "patient",
+    "user": [
+      "patient2@patient2.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 6
+},
+{
+  "fields": {
+    "role": "patient",
+    "user": [
+      "patient3@patient3.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 7
+},
+{
+  "fields": {
+    "role": "patient",
+    "user": [
+      "patient4@patient4.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 8
+},
+{
+  "fields": {
+    "role": "staff",
+    "user": [
+      "hsp2@hsp2.com"
+    ]
+  },
+  "model": "ipcms.permissionsrole",
+  "pk": 9
+},
+{
+  "fields": {
+    "lab_user": [
+      "lab1@lab1.com"
+    ],
+    "lab_first_name": "Alex",
+    "lab_last_name": "Ellsworth"
+  },
+  "model": "ipcms.labtech",
+  "pk": 1
+},
+{
+  "fields": {
+    "doctor_user": [
+      "doctor1@doctor1.com"
+    ],
+    "doctor_first_name": "Ryan",
+    "doctor_last_name": "Schachte",
+    "doctor_type": "Oncologist"
+  },
+  "model": "ipcms.doctor",
+  "pk": 1
+}
+]

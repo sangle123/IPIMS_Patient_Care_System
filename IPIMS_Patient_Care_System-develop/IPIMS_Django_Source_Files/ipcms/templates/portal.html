@@ -1,0 +1,510 @@
+{% load staticfiles %}
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{% static 'ico/favicon.png' %}">
+
+    <title>IPIMS Solutions</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+
+    <link href="{% static 'css/card.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/buttons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/textinput.css' %}" rel="stylesheet">
+
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">IPIMS S<i class="fa fa-circle">LUTI</i><i class="fa fa-circle">NS</i></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">HOME</a></li>
+
+            {% if not user.is_authenticated %}
+            <li><a href="/accounts/apply">APPLY</a></li>
+            <li><a href="/accounts/login">LOGIN</a></li>
+            {% elif approval == 0 and not user.username == "admin" %}
+
+            <li class="active"><a href="/accounts/portal">CHECK APPROVAL STATUS</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+            {% elif user.username == "admin" %}
+            <li class="active"><a href="/accounts/portal">ADMIN PORTAL</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+            {% else %}
+              {% if not roles.role == "patient" %}
+              <li class="active"><a href="/accounts/portal">HOSPITAL PORTAL</a></li>
+
+              {% else %}
+              <li class="active"><a href="/accounts/portal">PATIENT PORTAL</a></li>
+
+              {% endif %}
+            <li><a href="/logout">LOGOUT</a></li>
+            {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+<br><br>
+
+
+		<div class="row">
+
+      {% if approval == 0 and not user.username == "admin"%}
+      <h2>- We Are Still Reviewing Your Application -</h2>
+
+      {% else %}
+
+      {% if user.username == "admin" %}
+      <h2>Administrative Control Panel</h2><hr>
+
+      {% elif roles.role == "nurse" %}
+      <h2>Nurse Control Panel</h2><hr>
+
+      {% elif roles.role == "lab" %}
+      <h2>Lab Staff Control Panel</h2><hr>
+
+      {% elif roles.role == "doctor" %}
+      <h2>Doctor Control Panel</h2><h3>Welcome Dr. {{doc_name}}</h3><hr>
+
+      {% elif roles.role == "staff" %}
+       <h2>HSP Staff Control Panel</h2><hr>
+
+      {% elif not roles.role == "patient" and not roles.role == "admin" %}
+      <h2>Hospital Control Panel</h2><hr>
+
+      {% elif roles.role == "patient" %}
+      <h2>{{temp_user_data.first_name|title}} {{temp_user_data.last_name|title}}'s {{roles.role|title}} Portal</h2><hr>
+
+      {% endif %}
+
+      {% if not conditions_complete and not user.username == "admin" and roles.role = "patient" %}
+
+      <h3>Before Continuing Further, please <a href="/health_conditions">add your health conditions..</a></h3>
+
+      {% else %}
+
+      {% if roles.role == 'patient' %}
+      <div class="row">
+        <div class="col-sm-4">
+
+<div class="box10">
+  <h5><center>IPIMS Identification Card</center></h5>
+       <h1>{{temp_user_data.first_name|title}} {{temp_user_data.last_name|title}}</h1>
+       <img src="http://4.bp.blogspot.com/-zsbDeAUd8aY/US7F0ta5d9I/AAAAAAAAEKY/UL2AAhHj6J8/s1600/facebook-default-no-profile-pic.jpg"><br>
+      
+          <p>
+         <b>E-Mail Address:</b> {{temp_user_data.email}}<br>
+         <b>Address:</b> {{temp_user_data.address}}<br>
+         <b>SSN:</b> ***-**-****</br>
+         <b>Phone Number:</b> {{temp_user_data.phone_number}}<br>
+         <b>DOB: </b>{{temp_user_data.DOB}}<br>
+         <b>Insurance Provider: </b>{{temp_user_data.insurance_provider}}<br>
+         <b>Policy Number:</b> {{temp_user_data.insurance_policy_number}}<br>
+        <p>
+         <b>Allergies:</b>
+       </p>
+            <ul>
+            {% for x in allergens %}
+            <li>{{x}}</li>
+            {% endfor %}
+          </ul>
+        <p>
+         <b>Medical Conditions:</b>
+       </p>
+            <ul>
+            {% for x in med_conditions %}
+            <li>{{x}}</li>
+            {% endfor %}
+          </ul>
+
+       <br />
+       <b><a href="/accounts/portal/update_account/">Update Your IPIMS Contact Card</a></b>
+</div>
+
+        </div>
+        <div class="col-sm-4">
+          <br>
+              <h3>Personal Information</h3><br>
+              <a href="/health_conditions" class="btn">Update Health Conditions</a><br><br>
+              <a href="/accounts/portal/update_account/" class="btn">Update Account Information</a><br><br>
+              <form method = "POST" action="/accounts/portal/medical_history" id = "med_history">
+                {% csrf_token %}
+                <a href="javascript:{}" class = "btn" onclick="document.getElementById('med_history').submit(); return false;">View Medical History</a>
+                <input type="hidden" name="pk_patient2" value="{{current_patient.id}}">
+              </form><hr>
+              <h3>Appointment Information</h3><br>
+              <a href="/schedule" class="btn">Schedule Appointment</a><br><br>
+              <a href="/accounts/portal/view_appts/" class="btn">Current Appointments</a><br><br>
+              <a href="/accounts/portal/view_ApptHistory" class="btn">Appointment History</a><br><br><hr>
+              <h3>Lab Results Information</h3><br>
+
+              <form method="POST" action="/accounts/portal/admin/view_lab_results">
+                {% csrf_token %}
+                <input type="submit" class="btn" value="View My Lab Results"></a>
+                <input type="hidden" name="patient_labs" value="{{current_patient.pk}}">
+              </form>
+        </div>
+        <br>
+
+        <h3>Emergency/Other Information</h3><br>
+        {% if alert_sent == 0 %}
+          <a class="btn btn-red" data-toggle="modal" data-target="#myModal">Emergency IPIMS Alert</a><br><br>
+          <a class="btn btn-blue" href="/faqs">Help &amp; FAQ'S</a>
+
+          {% else %}
+          <h4><b>Your alert has been sent to the hospital!</b></h4>
+          <a class="btn btn-blue" href="/faqs">Help &amp; FAQ'S</a>
+        {% endif %}
+        <br><br><br><br><br><br>
+        <hr>
+
+
+            <h3>E-Prescription Pickup Reminders!</h3>
+        <div id ="reminders" class="col-sm-4">
+            {% if not medications_for_patient == "No Medications Pending" %}
+            <ul><br>
+              {% for medications in medications_for_patient %}
+
+              <form method="POST" action="/accounts/portal/clear/">
+                {% csrf_token %}
+                <b><li>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{medications.medication_name|title}} Quantity: {{medications.medication_quantity}}&emsp;&emsp;&emsp;&emsp;<button type="submit" name="pres" value="{{medications.pk}}">Clear Notification</button></li><b>
+              </form>
+
+              {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+              {{medications_for_patient}}
+
+            {% endif %}
+      </div>
+
+
+
+
+        </div>
+
+      </div>
+
+      {% endif %}
+      {% endif %}
+
+      {% endif %}
+
+		</div><!-- row -->
+
+    {% if approval == 0 and not user.username == "admin" %}
+
+    {% if not temp_user_data.data_sent == 1 %}
+    <div class = 'col-md-4'></div>
+      <div class="alert alert-warning col-md-4">
+        <strong>Warning!</strong> Your account will not activate until the submission application has been approved by our HSP staff.
+      </div>
+    <br><br><br><br><br><br>
+    <div class = 'col-md-4'></div>
+      <div class = 'col-md-4'>
+        <form method ='POST' action=''>
+          {% csrf_token %}
+          {{ form | crispy }}
+        <input type="submit" value="Submit Patient Application" class="btn default col-md-12"/>
+        </form><br><br>
+      </div>
+      <div class = 'col-md-4'></div>
+
+    {% else %}
+
+    <center>
+    <div class="alert alert-success">
+      <strong>Success!</strong> Your application has been submitted and is currently under review!
+    </div>
+    </center>
+
+    {% endif %}
+  {% endif %}
+		<br>
+</div><!-- container -->
+
+<div class = "container">
+
+  {% if user.username == "admin" %}
+
+    <a href="#" class="btn">Create Approved Patient</a><br><br>
+    <a href="/health_conditions" class="btn">Register New Employee</a><br><br>
+    <a href="/schedule" class="btn">Remove Employee</a><br><br>
+    <a href="#" class="btn">View All Patients</a><br><br>
+    <a href="#" class="btn">View All Employees</a><br><br>
+    <a href="/accounts/portal/admin/generate" class="btn">Generate Stats Report</a><br><br>
+    <hr>
+    <h3>Search For Patient In Database</h3>
+  <form method="POST" action="/search/">
+      {% csrf_token %}
+
+        <center>
+          <input id="address" type="textbox" placeholder="Search For Patient In Database" class="form-control fixedtest" name="search_data">
+        </center>
+        <span class="input-group-btn">
+          <button class="btn btn-info bigger-width" type="submit" id="addressSearch">Search</button>
+        </span>
+
+       <br><b>- Search Options - </b> <br>
+      <input type="radio" name="db_search_type" value="firstlast" checked="true">    First + Last name</input><br>
+      <input type="radio" name="db_search_type" value="email">    Email Address</input>
+  </form> <br><br>
+
+  {% endif %}
+<!--   {% if roles.role == "staff" %}
+  <div class = 'col-md-4'></div>
+  <div class = 'col-md-4'>
+    <a href="accounts/portal/uploadMedicalReportView" class="btn">Upload Medical Reports</a><br><br>
+    <a href="#" class="btn">Update Medical History</a><br><br>
+    <a href="#" class="btn">Retrieve Medical Information</a><br><br>
+    <a href="#" class="btn">Statistical Report Analysis</a><br><br>
+
+     </div>
+     <div class = 'col-md-4'></div> -->
+<!-- 
+    {% endif %} --> 
+  {% if roles.role == "doctor" %}
+
+  <div class = 'col-md-4'>
+  </div>
+  <div class = 'col-md-4'>
+
+    <a href="/accounts/portal/view_alerts" class="btn btn-red">Click To View All Alerts<br><i>{{alerts_count}} Emergency Alert(s)!</i></a><br><br>
+    <a href="/accounts/portal/admin/scheduled_appts" class="btn">View Scheduled Appointments<br><i>{{appts}} Queued!</i></a><br><br>
+    <a href="/accounts/portal/admin/view_patients" class="btn">View My Patients</a><br><br>
+    <a href="/accounts/portal/prescribe" class="btn">E-Prescribe Medication</a><br><br>
+    <a href="/accounts/portal/admin/all_lab_tests" class="btn">View Lab Reports</a><br><br>
+    <a href="/accounts/portal/admin/generate" class="btn">Generate Stats Report</a><br><br>
+
+
+ <h3>Search For Patient In Database</h3>
+
+  <form method="POST" action="/search/">
+      {% csrf_token %}
+
+
+        <center>
+          <input id="address" type="textbox" placeholder="Search For Patient In Database" class="form-control fixedtest" name="search_data">
+        </center>
+
+        <span class="input-group-btn">
+          <button class="btn btn-info bigger-width" type="submit" id="addressSearch">Search</button>
+        </span>
+
+       <br><b>- Search Options - </b> <br>
+      <input type="radio" name="db_search_type" value="firstlast" checked="true">    First + Last name</input><br>
+      <input type="radio" name="db_search_type" value="email">    Email Address</input>
+  </form>
+
+  <br>
+  <br>
+
+  </div>
+  <div class = 'col-md-4'></div>
+
+  {% endif %}
+
+
+
+
+
+
+
+
+ {% if roles.role == "nurse" %}
+
+  <div class = 'col-md-4'>
+  </div>
+  <div class = 'col-md-4'>
+
+    <a href="/accounts/portal/view_alerts" class="btn btn-red">Click To View All Alerts<br><i>{{alerts_count}} Emergency Alert(s)!</i></a><br><br>
+    <a href="/accounts/portal/admin/view_all_patient_data" class="btn">View Patient Data</a><br><br>
+    <a href="/accounts/portal/admin/generate" class="btn">Generate Stats Report</a><br><br>
+
+
+ <h3>Search For Patient In Database</h3>
+
+  <form method="POST" action="/search/">
+      {% csrf_token %}
+
+
+        <center>
+          <input id="address" type="textbox" placeholder="Search For Patient In Database" class="form-control fixedtest" name="search_data">
+        </center>
+
+        <span class="input-group-btn">
+          <button class="btn btn-info bigger-width" type="submit" id="addressSearch">Search</button>
+        </span>
+
+       <br><b>- Search Options - </b> <br>
+      <input type="radio" name="db_search_type" value="firstlast" checked="true">    First + Last name</input><br>
+      <input type="radio" name="db_search_type" value="email">    Email Address</input>
+  </form>
+
+  <br>
+  <br>
+
+  </div>
+  <div class = 'col-md-4'></div>
+
+  {% endif %}
+
+
+
+
+
+
+
+
+
+
+  {% if roles.role == "staff" %}
+
+  <div class="col-md-12">
+
+    <!-- <a href="/accounts/portal/view_alerts" class="btn btn-red">Click To View All Alerts<br><i>{{alerts_count}} Emergency Alert(s)!</i></a><br><br> -->
+    <a href="/accounts/portal/hsp/approvals" class="btn">Application Approvals<br></a><br>({{unapproved_count}} people waiting for application approval)<br><br>
+    <a href="/accounts/portal/admin/view_all_patient_data" class="btn">View Patient Data</a><br><br>
+    <!-- <a href="/accounts/portal/admin/generate" class="btn">Emergency Alerts</a><br><br> -->
+    <a href="/accounts/portal/admin/generate" class="btn">Generate Stats Report</a><br><br>
+
+ <h3>Search For Patient In Database</h3>
+
+  <form method="POST" action="/search/">
+      {% csrf_token %}
+
+        <center>
+          <input id="address" type="textbox" placeholder="Search For Patient In Database" class="form-control fixedtest" name="search_data">
+        </center>
+
+        <span class="input-group-btn">
+          <button class="btn btn-info bigger-width" type="submit" id="addressSearch">Search</button>
+        </span>
+
+       <br><b>- Search Options - </b> <br>
+      <input type="radio" name="db_search_type" value="firstlast" checked="true">    First + Last name</input><br>
+      <input type="radio" name="db_search_type" value="email">    Email Address</input>
+  </form> 
+
+  </div>
+  {% endif %}
+
+
+  {% if roles.role == "lab" %}
+
+  <div class="col-md-12">
+<!-- There are current {{unapproved_count}} people waiting for application approval!<br> -->
+
+
+    <!-- <a href="/accounts/portal/view_alerts" class="btn btn-red">Click To View All Alerts<br><i>{{alerts_count}} Emergency Alert(s)!</i></a><br><br> -->
+    <a href="/accounts/portal/admin/all_lab_tests" class="btn">View Lab Reports</a><br><br>
+    <a href="/accounts/portal/admin/create_lab_report" class="btn">Run Lab Report</a><br><br>
+
+
+  </div>
+  {% endif %}
+
+
+</div>
+
+	<div id="r">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-8 col-lg-offset-2">
+					<h4>SAVING LIVES AND MANAGING PATIENT CARE IS OUR GOAL.</h4>
+					<p>IPIMS Solutions is dedicated to solving patient problems, understanding user roles, developing efficient strategies and delivering quality content immediately. Our system is the future of hospitals and computing - with a powerful backend system and quality UX experience, IPIMS Solutions is the way for you.</p>
+				</div>
+			</div><!-- row -->
+		</div><!-- container -->
+	</div>
+
+
+	<!-- FOOTER -->
+	<div id="f">
+		<div class="container">
+			<div class="row centered">
+				IPIMS Solutions - 2015
+
+			</div><!-- row -->
+		</div><!-- container -->
+	</div><!-- Footer -->
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 style="color:Black;"><span class="glyphicon glyphicon-bell"></span> IPIMS Emergency Alert</h4>
+        </div>
+        <div class="modal-body">
+          Hello, {{temp_user_data.first_name}} {{temp_user_data.last_name}}<br>
+
+          If you haven't updated your health conditions, please do so <a href="/health_conditions/">HERE</a><br>
+
+          <form method="POST" action="/alert/">
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="comment">Optional Comments</label>
+            <textarea class="form-control" rows="5" id="comment" name='desc'></textarea>
+          </div>
+
+        </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel Emergency Alert</button>
+
+          <button type="submit" class="btn btn-default btn-default pull-right"><span class="glyphicon glyphicon-envelope"></span> Send Emergency Alert</button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+{% extends '_layouts/base.html' %}
+
+{% block headline %}
+
+	{% if authenticated == False %}
+		You are not logged in!
+	{% endif %}
+
+	{% if approval == 0 and not roles.role == "admin" and authenticated == True %}
+
+		You're Not Approved
+
+	{% elif roles.role == "admin" %}
+
+		Welcome To The Administrative Backend
+
+	{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+	{% if not approval == 0 %}
+		You're approved!
+
+		<a href="/schedule">Schedule Appt!</a>
+	{% endif %}
+	{{ user.username }}
+{% endblock %}
+

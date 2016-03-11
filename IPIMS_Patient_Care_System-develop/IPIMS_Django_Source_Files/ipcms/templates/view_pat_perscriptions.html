@@ -1,0 +1,48 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block extension %}
+
+	<script type = "text/javascript">
+		function printDiv() {
+
+			window.print();
+		}
+	</script>
+
+
+{% endblock %}
+
+{% block content %}
+
+<center><h1>Patient Subscriptions For {{current_patient.fill_from_application.first_name|title}} {{current_patient.fill_from_application.last_name|title}} </h1></center>
+
+{% if user.is_authenticated %}
+	<div class="col-sm-12">
+
+<div class="container">     
+		  <table class="table">
+		    <thead>
+		      <tr>
+		        <th>Perscription Name</th>
+		        <th>Perscribed By</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	{% for scriptions in scripts %}
+			      <tr>
+			        <td>{{scriptions.medication_name|title}}</td>
+			        <td>Dr. {{scriptions.prescribed_by_doctor.doctor_first_name|title}} {{scriptions.prescribed_by_doctor.doctor_last_name|title}}</td>
+		      {% endfor %}
+		    </tbody>
+		  </table>
+		</div>
+
+
+
+	</div>
+{% endif %}
+
+
+{% endblock %}

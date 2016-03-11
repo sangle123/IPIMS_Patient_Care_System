@@ -1,0 +1,56 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<center><h1>Patient Approval List</h1></center>
+
+{% if user.is_authenticated %}
+
+	<div class="row">
+
+		{% if size_of == 0 %}
+
+			<h2>NO ONE TO APPROVE</h2>
+
+		{% endif %}
+		{% for patient in unapproved_patient_list %}
+			<div class="col-md-12">
+				<div class="box4" id = "pullleft2">
+					<h3 style="color:#66CCFF">APPROVAL PENDING CARD</h3><hr color="white">
+				  	
+				  	Patient Name: {{patient.first_name}} {{patient.last_name}}<br><br>
+				  	Email: {{patient.email_address}}<br><br>
+				  	Age: {{patient.age}}<br><br>
+				  	Gender: {{patient.gender}}<br><br>
+				  	Race: {{patient.race}}<br><br>
+				  	DOB: {{patient.DOB}}<br><br>
+				  	Insurance: {{patient.insurance_provider}}<br><br>
+				  	Medications: {{patient.medications}}<br><br>
+				  	Contact Number: {{patient.phone_numer}}<br><Br>
+
+				    <form id ="approver" method = "POST" action='/accounts/portal/hsp/approvals/approve'>
+				    {% csrf_token %}
+					<input type="submit" class="resolver" value="Approve Patient"><i class="icon-chevron-right"></i></a>
+						<input type="hidden" name="pk_pending" value={{patient.user_id}}>
+					</form>
+
+
+				    <form id ="approver" method = "POST" action='/accounts/portal/hsp/approvals/approve'>
+				    {% csrf_token %}
+					<input type="submit" class="resolver" value="Deny Patient"><i class="icon-chevron-right"></i></a>
+						<input type="hidden" name="pk_pending" value={{patient.user_id}}>
+					</form>
+
+
+				</div>
+			</div>
+			<hr>
+		{% endfor %}
+	</div>
+	<br><br>
+
+{% endif %}
+
+
+{% endblock %}

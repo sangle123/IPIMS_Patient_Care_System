@@ -1,0 +1,177 @@
+{% extends '_layouts/base.html' %}
+
+{% block headline %}
+	Form Submitted Successfully!
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Patient Search</h1>
+
+
+
+{% if search_data|length == 1 or located == False%}
+
+	<h3>No Results Were Found</h3>
+
+{% endif %}
+
+
+{% if not search_data == None and search_data|length > 1 and located == True %}
+
+
+{% if temp_user_data|length == 0 or temp_user_data|length == 0%}
+	<h2>1 User Has Been Found </h2>
+{% else %}
+	<h2>{{temp_user_data|length}} Users Have Been Found </h2>
+{% endif %}
+
+
+
+{% if temp_user_data|length > 0 %}
+
+	<div class="row">
+		{% for item in temp_user_data %}
+			<div class="box10 col-sm-10">
+			  <h5><center>IPIMS Identification Card</center></h5>
+
+			       <h1>{{item.fill_from_application.first_name|title}} {{item.fill_from_application.last_name|title}}</h1>   
+			       <form action = "/delete/" method="POST">
+			       	{% csrf_token %}
+			       	<input type="hidden" name="pk" value="{{item.id}}">
+			       	<button type="submit">Delete {{item.fill_from_application.first_name|title}} {{item.fill_from_application.last_name|title}}</button>
+			       </form>
+
+			      <tr>
+			        <td>
+			        	<form method="POST" action="/accounts/portal/medical_history">
+			        		{% csrf_token %}
+			        		<input type="submit" value="View Patient Information Here" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+			        <td>
+			        	<form method="POST" action="/accounts/portal/admin/patient_perscriptions">
+			        		{% csrf_token %}
+			        		<input type="submit" value="View Patient Perscriptions" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+
+			        <td>
+			        	<form method="POST" action="/accounts/portal/admin/upload_medical_report">
+			        		{% csrf_token %}
+			        		<input type="submit" value="Upload/Update Medical Report" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+
+			        <td>
+			        	<form method="POST" action="/accounts/portal/admin/EditMedicalHistory">
+			        		{% csrf_token %}
+			        		<input type="submit" value="Edit Patient Concerns/History" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+
+
+
+			      </tr>
+
+			       <img src="http://4.bp.blogspot.com/-zsbDeAUd8aY/US7F0ta5d9I/AAAAAAAAEKY/UL2AAhHj6J8/s1600/facebook-default-no-profile-pic.jpg">
+			          <p>
+			         <b>E-Mail Address:</b> {{item.fill_from_application.email_address}}<br>
+			         <b>Address:</b> {{item.fill_from_application.address}}<br>
+			         <b>SSN:</b> ***-**-****</br>
+			         <b>Phone Number:</b> {{item.fill_from_application.phone_number}}<br>
+			         <b>DOB: </b>{{item.fill_from_application.DOB}}<br>
+			         <b>Insurance Provider: </b>{{item.fill_from_application.insurance_provider}}<br>
+			         <b>Policy Number:</b> {{item.fill_from_application.insurance_policy_number}}<br>
+			        <p>    
+			       <br />
+			</div>
+		{% endfor %}
+
+	</div>
+
+
+{% else %}
+
+	<div class="row">
+
+			<div class="box10 col-sm-10">
+			  <h5><center>IPIMS Identification Card</center></h5>
+
+			       <h1>{{temp_user_data.fill_from_application.first_name|title}} {{temp_user_data.fill_from_application.last_name|title}}</h1>   
+			       <form action = "/delete/" method="POST">
+			       	{% csrf_token %}
+			       	<input type="hidden" name="pk" value="{{temp_user_data.id}}">
+			       	<button type="submit">Delete {{temp_user_data.fill_from_application.first_name|title}} {{temp_user_data.fill_from_application.last_name|title}}</button>
+			       </form>
+
+
+			      <tr>
+			        <td>
+			        	<form method="POST" action="/accounts/portal/medical_history">
+			        		{% csrf_token %}
+			        		<input type="submit" value="View Patient Information Here" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+			        <td>
+			        	<form method="POST" action="/accounts/portal/admin/patient_perscriptions">
+			        		{% csrf_token %}
+			        		<input type="submit" value="View Patient Perscriptions" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+
+			        <td>
+			        	<form method="POST" action="/accounts/portal/admin/upload_medical_report">
+			        		{% csrf_token %}
+			        		<input type="submit" value="Upload/Update Medical Report" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+
+			        <td>
+			        	<form method="POST" action="/accounts/portal/admin/EditMedicalHistory">
+			        		{% csrf_token %}
+			        		<input type="submit" value="Edit Patient Concerns/History" name=""></input>
+			        		<input type="hidden" value="{{item.pk}}" name="pk_patient2"></input>
+			        	</form>
+			        </td>
+
+
+
+			      </tr>
+
+
+
+			       <img src="http://4.bp.blogspot.com/-zsbDeAUd8aY/US7F0ta5d9I/AAAAAAAAEKY/UL2AAhHj6J8/s1600/facebook-default-no-profile-pic.jpg">
+			          <p>
+			         <b>E-Mail Address:</b> {{temp_user_data.fill_from_application.email_address}}<br>
+			         <b>Address:</b> {{temp_user_data.fill_from_application.address}}<br>
+			         <b>SSN:</b> ***-**-****</br>
+			         <b>Phone Number:</b> {{temp_user_data.fill_from_application.phone_number}}<br>
+			         <b>DOB: </b>{{temp_user_data.fill_from_application.DOB}}<br>
+			         <b>Insurance Provider: </b>{{temp_user_data.fill_from_application.insurance_provider}}<br>
+			         <b>Policy Number:</b> {{temp_user_data.fill_from_application.insurance_policy_number}}<br>
+			        <p>    
+			       <br />
+			       <b><a href="#">Update Your IPIMS Contact Card</a></b>
+			</div>
+
+
+	</div>
+
+
+{% endif %}
+
+
+
+{% endif %}
+
+{% endblock %}
+

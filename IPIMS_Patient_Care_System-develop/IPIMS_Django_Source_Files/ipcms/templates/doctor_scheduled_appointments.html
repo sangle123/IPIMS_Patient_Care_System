@@ -1,0 +1,93 @@
+
+{% extends '_layouts/base.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block extension %}
+
+	<link href="{% static 'css/displaybox.css' %}" rel="stylesheet">
+
+	<script>
+
+	function toggle_resolved() {
+		$('.r1').fadeToggle();
+	}
+	</script>
+{% endblock %}
+
+{% block content %}
+
+	{% if user.is_authenticated and roles.role == "doctor" or roles.role == "hsp" %}
+		<hr>
+		<center><h1>Currently Scheduled Appointments For Dr. {{current_doctor.doctor_first_name}} {{current_doctor.doctor_last_name}}</h1></center>
+		<hr>
+
+		Slide To Toggle Resolved and All Cases
+		<div class="slideTwo">	
+			<input type="checkbox" value="None" id="slideTwo" name="check" onclick="toggle_resolved()"/>
+			<label for="slideTwo"></label>
+		</div>
+
+		{% for appts in relevant_appts %}
+
+
+			<div class = "row r{{appts.resolved}}" id = "pullleft">
+				<div class="wrap"><br><br>
+				  <span class="horiz-flag noise "><h1 id ="box">Patient: {{appts.user.fill_from_application.first_name|title}} {{appts.user.fill_from_application.last_name|title}}</h1></span>
+				   <p>
+				         <hr><b>Patient Name:</b> {{appts.user.fill_from_application.first_name|title}} {{appts.user.fill_from_application.last_name|title}}<hr>
+				         <b>Patient Pain Level:</b> {{appts.pain_level}} <hr>
+				         <b>Patient Appointment Summary:</b>  {{appts.medical_conditions}} <hr>
+				         <b>Patient Allergies:</b> {{appts.allergies}} <hr>
+				         <b>View Patient Medical History:</b>
+				         <!-- <input type="submit" value ="View Medical History"<a href="/accounts/portal/medical_history">Click Here</a><hr> -->
+
+				         <form method ="POST" action='/accounts/portal/medical_history'>
+				         	{% csrf_token %}
+				         	<input type="submit" class="resolver" value="View Medical History"> 
+				         	<input type="hidden" name="pk_patient" value={{appts.pk}}>
+				         </form>
+                         
+				         <b>Cancel Current Appointment:</b>
+					     <form action="{% url 'doctor_delete' appts.id %}" method="POST">
+				         	{% csrf_token %}
+				         	<input type="submit" class="resolver" value="Cancel Appointment"> 
+				         </form>
+
+
+				         <b>Prescribe Medication:</b>
+					     <form action="{% url 'PrescribeMedicationView' %}" method="GET">
+				         	{% csrf_token %}
+				         	<input type="submit" class="resolver" value="Prescribe Medication"> 
+				         </form>
+
+				    	 {% if appts.resolved == 1 %}
+				    	 <h3><strike>Case Has Been Resolved</strike></h3>
+
+						    <form id ="checker{{appts.pk}}" method = "POST" action='/accounts/portal/admin/resolve_patient_case'>
+						    {% csrf_token %}
+							<input type="submit" class="resolver" value="Click To Undo"><i class="icon-chevron-right"></i></a>
+								<input type="hidden" name="appt_id" value={{appts.pk}}>
+							</form>
+
+						{% elif appts.resolved == 0 %}
+
+						<h3>Resolve Case?</h3>
+						    <form id ="checker{{appts.pk}}" method = "POST" action='/accounts/portal/admin/resolve_patient_case'>
+						    	{% csrf_token %}
+						    	<input type="submit" class="resolver" value="Click To Resolve"><i class="icon-chevron-right"></i></a>
+								<input type="hidden" name="appt_id" value={{appts.pk}}>
+							</form>
+
+						{% endif %}
+				   </p> 
+				   <br />
+				</div>
+			</div>
+
+
+		{% endfor %}
+
+	{% endif %}
+
+{% endblock %}

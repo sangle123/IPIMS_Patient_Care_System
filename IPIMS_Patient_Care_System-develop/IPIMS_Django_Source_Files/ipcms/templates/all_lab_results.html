@@ -1,0 +1,55 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	<center><h1>All Patient Lab Results</h1></center>
+	<hr>
+
+	{% if user.is_authenticated %}
+		<div class="col-sm-12">
+
+		{% for results in all_lab_tests %}
+
+			<form method="POST" action="/accounts/portal/admin/view_lab_results">
+				{% csrf_token %}
+
+				<input type="submit" class="btn" value="{{results.lab_test}} For {{results.lab_patient.fill_from_application.first_name|title}} {{results.lab_patient.fill_from_application.last_name|title}}"></input>
+				<input type="hidden" value="{{results.lab_patient.pk}}" name="patient_labs"></input>
+
+			</form><br>
+
+			{% if roles.role == "lab" %}
+
+				<form method="POST" action="/accounts/portal/admin/edit_lab_report">
+					{% csrf_token %}
+
+					<input type="submit" class="btn" value="Edit Results"></input>
+					<input type="hidden" value="{{results.pk}}" name="report_remove"></input>
+
+				</form>
+
+
+			<form method="POST" action="/accounts/portal/admin/delete_lab_report">
+				{% csrf_token %}
+
+				<input type="submit" class="btn" value="Delete Test"></input>
+				<input type="hidden" value="{{results.pk}}" name="report_remove"></input>
+
+			</form>
+
+			{% endif %}
+
+
+
+			<hr>
+
+
+		{% endfor %}
+
+
+		</div>
+	{% endif %}
+
+
+{% endblock %}

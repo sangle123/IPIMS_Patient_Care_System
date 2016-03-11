@@ -1,0 +1,142 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{% static 'ico/favicon.png' %}">
+
+    <title>IPIMS Solutions</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{% static 'js/Chart.js' %}"></script>
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <script src="{% static 'js/modules/exporting.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/jquery.simple-dtpicker.js' %}"></script>
+    <link type="text/css" href="http://mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css" rel="stylesheet" />
+    <link href="{% static 'css/buttons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/card.css' %}" rel="stylesheet">
+
+
+
+
+    <script src="http://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="http://code.highcharts.com/maps/modules/data.js"></script>
+    <script src="http://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+<script>
+$(document).ready(function() {
+   $('#id_resolved').hide();
+   $('label[for="id_resolved"]').hide();
+});
+</script>
+
+    {% block extension %}{% endblock %}
+
+  </head>
+  <body>
+
+    {{ static }}
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">IPIMS S<i class="fa fa-circle">LUTI</i><i class="fa fa-circle">NS</i></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">HOME</a></li>
+
+            {% if not user.is_authenticated %}
+            <li><a href="/accounts/apply">APPLY</a></li>
+            <li><a href="/accounts/login">LOGIN</a></li>
+            {% elif approval == 0 and not user.username == "admin" %}
+
+            <li class="active"><a href="/accounts/portal">CHECK APPROVAL STATUS</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+            {% elif user.username == "admin" %}
+            <li class="active"><a href="/accounts/portal">ADMIN PORTAL</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+            {% else %}
+            <li class="active"><a href="/accounts/portal">USER PORTAL</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+            {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+<br>
+
+    <div class="container w">
+        {% if user.is_authenticated %}
+<!-- <a href="accounts/portal/">Return To The Portal</a> -->
+        <a href="/accounts/portal/" class="btnn btn-blue">Return To The Portal</a>
+{% endif %}
+            {% block content %}{% endblock %}
+
+    </div><!-- container -->
+
+
+
+    
+    <div id="r">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h4>SAVING LIVES AND MANAGING PATIENT CARE IS OUR GOAL.</h4>
+                    <p>IPIMS Solutions is dedicated to solving patient problems, understanding user roles, developing efficient strategies and delivering quality content immediately. Our system is the future of hospitals and computing - with a powerful backend system and quality UX experience, IPIMS Solutions is the way for you.</p>
+                </div>
+            </div><!-- row -->
+        </div><!-- container -->
+    </div>
+    
+    
+    <!-- FOOTER -->
+    <div id="f">
+        <div class="container">
+            <div class="row centered">
+                IPIMS Solutions - 2015
+        
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- Footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+
+</html>

@@ -1,0 +1,401 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block extension %}
+
+<script type = "text/javascript">
+  $(document).ready(function(){
+  var ctx = $("#gender_data").get(0).getContext("2d");
+  var ctx2 = $("#gender_data2").get(0).getContext("2d");
+  var ctx3 = $("#gender_data3").get(0).getContext("2d");
+	var ctx4 = $("#gender_data4").get(0).getContext("2d");
+	var ctx5 = $("#case_data").get(0).getContext("2d");
+	// var ctx6 = $("#case_data2").get(0).getContext("2d");
+
+    var genders = [
+        {
+            value: {{num_males}},
+            color: "#BF3EFF",
+            highlight: "#D276FF",
+            label: "% of Males"
+        },
+        {
+            value: {{num_females}},
+            color: "#52D5F5",
+            highlight: "#9CE7F9",
+            label: "% of Females"
+        },
+        {
+            value: {{num_other}},
+            color: "#353F3E",
+            highlight: "#6D8280",
+            label: "% of Other"
+        },
+        {
+            value: {{num_PNTS}},
+            color: "#A2C93A",
+            highlight: "#BED975",
+            label: "% of Prefer Not To Say"
+        },
+
+    ];
+
+
+    var races = [
+        {
+            value: {{num_white}},
+            color: "cornflowerblue",
+            highlight: "lightskyblue",
+            label: "% White"
+        },
+        {
+            value: {{num_indian}},
+            color: "Fuchsia",
+            highlight: "DarkViolet",
+            label: "% American Indian"
+        },
+        {
+            value: {{num_hawaiian}},
+            color: "Gold",
+            highlight: "GoldenRod",
+            label: "% Native Hawaiian"
+        },
+        {
+            value: {{num_black}},
+            color: "#816687",
+            highlight: "#A892AD",
+            label: "% African American"
+        },
+        {
+            value: {{num_asian}},
+            color: "#FF1493",
+            highlight: "#FF5AB3",
+            label: "% Asian"
+        },
+        {
+            value: {{num_other_race}},
+            color: "#E32636",
+            highlight: "#EB6772",
+            label: "% Other"
+        },
+    ];
+
+
+    var income_data = [
+        {
+            value: {{num_1}},
+            color: "#ECC8EC",
+            highlight: "#F4E0F4",
+            label: "% $0-$10,000"
+        },
+        {
+            value: {{num_2}},
+            color: "Fuchsia",
+            highlight: "DarkViolet",
+            label: "% $10,001-$30,000"
+        },
+        {
+            value: {{num_3}},
+            color: "#B23AEE",
+            highlight: "#DFAEF8",
+            label: "% $30,001-$60,000"
+        },
+        {
+            value: {{num_4}},
+            color: "#8F8FBC",
+            highlight: "#CFCFE2",
+            label: "% $60,001-$85,000"
+        },
+        {
+            value: {{num_5}},
+            color: "#00E5EE",
+            highlight: "#88FAFF",
+            label: "% $85,001-$110,000"
+        },
+        {
+            value: {{num_6}},
+            color: "#00EE76",
+            highlight: "#4DFFA5",
+            label: "% $110,001+"
+        },
+        {
+            value: {{num_7}},
+            color: "#FFAF4D",
+            highlight: "#FFD199",
+            label: "% Prefer Not To Say"
+        },
+    ];
+
+
+    var age_data = [
+        {
+            value: {{age_1}},
+            color: "#8B5A2B",
+            highlight: "#E1BF9F",
+            label: "% Age 0-18"
+        },
+        {
+            value: {{age_2}},
+            color: "#D43D1A",
+            highlight: "#F5785A",
+            label: "% Age 19-44"
+        },
+        {
+            value: {{age_3}},
+            color: "#6F4242",
+            highlight: "#CFAFAF",
+            label: "% Age 45-60"
+        },
+        {
+            value: {{age_4}},
+            color: "#8B8989",
+            highlight: "#DAD7D7",
+            label: "% Age 61+"
+        },
+    ];
+
+    var case_data = [
+        {
+            value: {{resolved_cases}},
+            color: "#A2C93A",
+            highlight: "#BED975",
+            label: "% Resolved Cases"
+        },
+        {
+            value: {{unresolved_cases}},
+            color: "#E32636",
+            highlight: "#EB6772",
+            label: "% Unresolved Cases"
+        },
+    ];
+
+
+    // PATIENT
+    var gender = new Chart(ctx).Pie(genders);
+    var race = new Chart(ctx2).Pie(races);
+    var income = new Chart(ctx3).Pie(income_data);
+    var age = new Chart(ctx4).Pie(age_data);
+
+    // HOSPITAL
+    var cases = new Chart(ctx5).Doughnut(case_data);
+    // var cases2 = new Chart(ctx6).Doughnut(case_data);
+
+
+// // Need to query the tuples from the database for the live patient data
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'bar',
+            backgroundColor: '#ECECEC'
+        },
+        title: {
+            text: 'Hospital Admissions Data and Employee Data'
+        },
+        xAxis: {
+            // categories: ['Patients Accepted', 'Patients Pending', 'People Employed'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'People',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' people'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -25,
+            y: 0,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Patients Accepted',
+            data: [{{all_accepted}}],
+            color: '#7ced50',
+        }, {
+            name: 'Staff Employed',
+            data: [{{staff_roles}}],
+            color: '#f461ed',
+        },  {
+            name: 'Patients Approved Within Last 30 Days',
+            data: [{{accepted_count_last_30_days}}],
+            color: '#9d1bf9',
+        }]
+    });
+});
+
+
+});
+
+
+function printDiv() {
+
+	window.print();
+}
+
+
+    </script>
+
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<br><br>
+<a class="btn btn-blue" onclick="printDiv()">Print Statistics Report</a>
+<hr>
+
+{% if user.is_authenticated and not roles.role == "patient" %}
+
+
+<div id="printableArea">
+<center><h1>Patient Statistical Report Analysis</h1></center><hr>
+<div class="row" id = 'printer'>
+
+<div id="container" style="min-width: 310px; max-width: 1200px; height: 250px; margin: 0 auto"></div>
+
+  <div class="col-md-3">
+  	<center>
+	  	<h4>Gender Breakdown</h4><hr>
+	  	<canvas id="gender_data" width="250" height="250"></canvas><br><br><Br>
+
+	  		<h5>
+	  			<ul>
+			  		<li>{{num_males}}% Male</li>
+			  		<li>{{num_females}}% Female</li>
+			  		<li>{{num_PNTS}}% Prefer Not To Say</li>
+			  		<li>{{num_other}}% Other</li>
+		  		</ul>
+		  	</h5>
+	
+  	</center>
+</div>
+
+  <div class="col-md-3">
+
+  	<h4>Population Breakdown</h4><hr>
+  	<canvas id="gender_data2" width="250" height="250"></canvas><br><br><Br>
+
+  		<h5>
+  			<ul>
+		  		<li>{{num_white}}% White</li>
+		  		<li>{{num_indian}}% American Indian</li>
+		  		<li>{{num_hawaiian}}% Native Hawaiian</li>
+		  		<li>{{num_black}}% African American</li>
+		  		<li>{{num_asian}}% Asian</li>
+		  		<li>{{num_other_race}}% Other</li>
+	  		</ul>
+	  	</h5>
+
+  	</center>
+
+  </div>
+  <div class="col-md-3">
+
+  	<h4>Income Breakdown</h4><hr>
+  	<canvas id="gender_data3" width="250" height="250"></canvas><br><br><Br>
+
+  		<h5>
+  			<ul>
+		  		<li>{{num_1}}% $0-$10,000</li>
+		  		<li>{{num_2}}% $10,001-$30,000</li>
+		  		<li>{{num_3}}% $30,001-$60,000</li>
+		  		<li>{{num_4}}% $60,001-$85,000</li>
+		  		<li>{{num_5}}% $85,001-$110,000</li>
+		  		<li>{{num_6}}% $110,001+</li>
+		  		<li>{{num_7}}% Prefer Not To Say</li>
+	  		</ul>
+	  	</h5>
+
+  	</center>
+
+
+  </div>
+  <div class="col-md-3">
+
+  	<h4>Average Age Breakdown</h4><hr>
+  	<canvas id="gender_data4" width="250" height="250"></canvas><br><br><Br>
+
+  		<h5>
+  			<ul>
+		  		<li>{{age_1}}% Age 0-18</li>
+		  		<li>{{age_2}}% Age 19-44</li>
+		  		<li>{{age_3}}% Age 45-60</li>
+		  		<li>{{age_4}}% Age 61+</li>
+	  		</ul>
+	  	</h5>
+
+  	</center>
+
+  </div>
+</div>
+
+<hr>
+<center><h1>Hospital Statistical Report Analysis</h1></center><hr>
+<div class="row">
+  <div class="col-md-12">
+  	<h4>Analysis of Health Outcomes</h4><hr>
+	<canvas id="case_data" width="250" height="250"></canvas><br><br><Br>
+    <br><br><br>
+	<h5 align="right">
+		<ul>
+  		<li>{{unresolved_cases}}% Unresolved Cases</li>
+  		<li>{{resolved_cases}}% Resolved Cases</li>
+  		</ul>
+  	</h5>
+
+  	</center>
+
+  </div>
+
+<!--   <div class="col-md-6">
+
+  	<h4>Employee Breakdown</h4><hr>
+	<canvas id="case_data2" width="350" height="350"></canvas><br><br><Br>
+	<h5 align="center">
+		<ul>
+  		<li>{{resolved_cases}}% Doctor</li>
+  		<li>{{unresolved_cases}}% Nurse</li>
+  		<li>{{unresolved_cases}}% HSP Staff</li>
+  		<li>{{unresolved_cases}}% Lab Staff</li>
+  		</ul>
+  	</h5>
+
+  	</center>
+
+  </div>
+ -->
+</div>
+</div>
+
+
+{% endif %}
+
+
+{% endblock %}

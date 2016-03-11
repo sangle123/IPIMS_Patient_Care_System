@@ -1,0 +1,21 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	<center><h1>Edit Patient Lab Results</h1></center>
+
+	{% if user.is_authenticated %}
+		<div class="col-sm-12">
+			<form method ='POST' action=''>
+				{% csrf_token %}
+				{{ form|crispy }}
+				<input type="hidden" value="" name="send_form"></input>
+				<input type="hidden" value={{patient_object.id}} name="pk_patient2"></input>
+				<input type="submit" value="Update Account Information" class="btn default"/>
+			</form>
+		</div>
+	{% endif %}
+
+
+{% endblock %}

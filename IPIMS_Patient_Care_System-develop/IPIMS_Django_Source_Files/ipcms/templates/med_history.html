@@ -1,0 +1,98 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<hr>
+<center><h1>Patient Medical History For {{patient.fill_from_application.first_name}} {{patient.fill_from_application.last_name}}</h1></center>
+<!-- <h3>{{patient.fill_from_application.first_name}} {{patient.fill_from_application.last_name}}</h3> -->
+
+{% if user.is_authenticated %}
+<hr>
+<div class="row">
+
+	<div class="col-md-4">
+		<i><h3>Appointment History</h3></i>
+		<hr>
+		<ul>
+		{% for appt in appts %}
+
+			<li><h3>{{appt.date}}</h3> 
+			{% if appt.resolved == 0%}
+				<h5>Status: Unresolved</h5>
+			{% else %}
+				<h5>Status: Resolved</h5>
+			{% endif %}
+			</li>
+
+		{% endfor %}
+		</ul>
+	</div>
+
+	<div class="col-md-4">
+		<i><h3>Patient Data</h3></i>
+		<hr>
+<div class="box10">
+  <h5><center>IPIMS Identification Card</center></h5>
+       <h1>{{temp_user_data.first_name|title}} {{temp_user_data.last_name|title}}</h1>   
+       <img src="http://4.bp.blogspot.com/-zsbDeAUd8aY/US7F0ta5d9I/AAAAAAAAEKY/UL2AAhHj6J8/s1600/facebook-default-no-profile-pic.jpg"><br>
+          <p>
+         <b>E-Mail Address:</b> {{temp_user_data.email}}<br>
+         <b>Address:</b> {{temp_user_data.address}}<br>
+         <b>SSN:</b> ***-**-****</br>
+         <b>Phone Number:</b> {{temp_user_data.phone_number}}<br>
+         <b>DOB: </b>{{temp_user_data.DOB}}<br>
+         <b>Insurance Provider: </b>{{temp_user_data.insurance_provider}}<br>
+         <b>Policy Number:</b> {{temp_user_data.insurance_policy_number}}<br>
+        <p>
+</div>
+
+	</div>
+
+	<div class="col-md-4">
+		<i><h3>Medical History</h3></i>
+		<hr>
+		<!-- <h5><a href="#">Click To View Lab Records</a></h5><br> -->
+
+		<h3>Allergies</h3>------------------------------------------------------------
+		
+		{% for allergy in allergies %}
+			<h4>-{{allergy}}</h4>
+		{% endfor %}
+		
+		<br><Br>
+
+		<h3>Medications</h3>------------------------------------------------------------
+
+		{% if medications|length > 1 %}
+			{% for medication in medications %}
+				<h4>-{{medication}}</h4>
+			{% endfor %}
+		{% endif %}
+
+		{% for meds in doc_meds %}
+
+			<h4>-{{meds.medication_name}}</h4>
+
+		{% endfor %}
+
+		<br><h3>IPIMS Medical History Data</h3>------------------------------------------------------------<br>
+		<h4>
+			{% for history in hsp_med_history %}
+				Allergies: {{history.allergies}}<br>
+				Medical Conditions: {{history.medical_conditions}}<br>
+			{% endfor %}
+		</h4>
+
+	</div>
+
+
+
+</div>
+
+	
+{% endif %}
+
+
+{% endblock %}

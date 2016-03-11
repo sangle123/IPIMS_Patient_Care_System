@@ -1,0 +1,33 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block extension %}
+
+	<script type = "text/javascript">
+		function printDiv() {
+
+			window.print();
+		}
+	</script>
+
+{% endblock %}
+
+{% block content %}
+
+<center><h1>Update Patient Medical History For {{current_patient.fill_from_application.first_name|title}} {{current_patient.fill_from_application.last_name|title}} </h1></center>
+
+{% if user.is_authenticated %}
+
+
+		<form method ='POST' action='/accounts/portal/admin/EditMedicalHistory'>
+			{% csrf_token %}
+			{{ form|crispy }}
+			<input type="hidden" value="" name="send_form"></input>
+			<input type="hidden" value={{current_patient.fill_from_application.id}} name="pk_patient2"></input>
+			<input type="submit" value="Update Patient Medical History Data" class="btn default"/>
+		</form>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content %}
+
+
+<center><h1>Schedule Appointment</h1></center>
+
+{% if user.is_authenticated %}
+<div class="col-sm-12">
+	<form method ='POST' action=''>
+		{% csrf_token %}
+		{{ form|crispy }}
+		<input type="submit" value="Schedule" class="btn default"/>
+	</form>
+	<br>
+</div>
+{% endif %}
+
+	<script type="text/javascript">
+		$(function(){
+			$('*[id=id_date]').appendDtpicker();
+		});
+	</script>
+
+{% endblock %}

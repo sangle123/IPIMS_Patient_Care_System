@@ -1,0 +1,1304 @@
+[
+{
+    "fields": {
+        "hunger_level": 0,
+        "anxiety_level": 0,
+        "chest_pain_level": 0,
+        "stomach_level": 0,
+        "user": 1,
+        "nausea_level": 0,
+        "body_ache_level": 0
+    },
+    "model": "ipcms.patienthealthconditions",
+    "pk": 1
+},
+{
+    "fields": {
+        "hunger_level": 10,
+        "anxiety_level": 10,
+        "chest_pain_level": 0,
+        "stomach_level": 0,
+        "user": 3,
+        "nausea_level": 10,
+        "body_ache_level": 0
+    },
+    "model": "ipcms.patienthealthconditions",
+    "pk": 2
+},
+{
+    "fields": {
+        "current_health_conditions": 2,
+        "resolved": 1,
+        "doctor": 1,
+        "allergies": "None",
+        "pain_level": 5,
+        "user": 3,
+        "date": "2015-10-17 21:10",
+        "medical_conditions": "None"
+    },
+    "model": "ipcms.patientappt",
+    "pk": 5
+},
+{
+    "fields": {
+        "current_health_conditions": 2,
+        "resolved": 0,
+        "doctor": 1,
+        "allergies": "None",
+        "pain_level": 4,
+        "user": 3,
+        "date": "2015-10-29 21:17",
+        "medical_conditions": "None"
+    },
+    "model": "ipcms.patientappt",
+    "pk": 6
+},
+{
+    "fields": {
+        "current_health_conditions": 1,
+        "resolved": 1,
+        "doctor": 1,
+        "allergies": "None",
+        "pain_level": 6,
+        "user": 1,
+        "date": "2015-10-31 14:16",
+        "medical_conditions": "None"
+    },
+    "model": "ipcms.patientappt",
+    "pk": 7
+},
+{
+    "fields": {
+        "current_health_conditions": 1,
+        "resolved": 0,
+        "doctor": 1,
+        "allergies": "None",
+        "pain_level": 5,
+        "user": 1,
+        "date": "2015-10-21 17:25",
+        "medical_conditions": "None"
+    },
+    "model": "ipcms.patientappt",
+    "pk": 8
+},
+{
+    "fields": {
+        "prescribed_by_doctor": 1,
+        "medication_name": "Xanax",
+        "patient": 1,
+        "reminder": 1
+    },
+    "model": "ipcms.emedication",
+    "pk": 1
+},
+{
+    "fields": {
+        "prescribed_by_doctor": 1,
+        "medication_name": "Adderall",
+        "patient": 1,
+        "reminder": 1
+    },
+    "model": "ipcms.emedication",
+    "pk": 2
+},
+{
+    "fields": {
+        "prescribed_by_doctor": 1,
+        "medication_name": "IB Proufen",
+        "patient": 1,
+        "reminder": 1
+    },
+    "model": "ipcms.emedication",
+    "pk": 3
+},
+{
+    "fields": {
+        "prescribed_by_doctor": 1,
+        "medication_name": "Xanaxxxxxx",
+        "patient": 1,
+        "reminder": 1
+    },
+    "model": "ipcms.emedication",
+    "pk": 4
+},
+{
+    "fields": {
+        "lab_patient": 1,
+        "lab_results": "negative",
+        "lab_test": "Colonoscopy",
+        "lab_tech": 1,
+        "lab_notes": "Insert Notes For Lab Test"
+    },
+    "model": "ipcms.labreport",
+    "pk": 5
+},
+{
+    "fields": {
+        "lab_patient": 1,
+        "lab_results": "positive",
+        "lab_test": "Diabetes risk tests",
+        "lab_tech": 1,
+        "lab_notes": "Need to seek doctor/medical attention immediately!"
+    },
+    "model": "ipcms.labreport",
+    "pk": 6
+},
+{
+    "fields": {
+        "allergies": "retergerg",
+        "patient": 3,
+        "medical_conditions": "ergergerg"
+    },
+    "model": "ipcms.addmedicalhistory",
+    "pk": 1
+},
+{
+    "fields": {
+        "allergies": "dogs, flees, cats",
+        "patient": 3,
+        "medical_conditions": "heart pain, help"
+    },
+    "model": "ipcms.addmedicalhistory",
+    "pk": 2
+},
+{
+    "fields": {
+        "allergies": "Cats, Dogs, Flees",
+        "patient": 1,
+        "medical_conditions": "Heart Pain, Chest Pain"
+    },
+    "model": "ipcms.addmedicalhistory",
+    "pk": 3
+},
+{
+    "fields": {
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2015-11-05T18:34:22.068Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$bDztFhCTyoJj$SIFpbgZfpf36l1zAmynf9Qfhy090xlYcEy5Ujj7mNko=",
+        "email": "admin@admin.com",
+        "date_joined": "2015-10-28T07:12:14.768Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "username": "hsp1",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-06T04:41:56.269Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$Z7gSTQBP5wDP$RYdQyMzMo48ZFH1fgVT0tIhL0wniWdK4MlhTo6qnJ7Y=",
+        "email": "",
+        "date_joined": "2015-10-28T07:13:00.411Z"
+    },
+    "model": "auth.user",
+    "pk": 2
+},
+{
+    "fields": {
+        "username": "patient1@patient1.com",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-06T00:03:46.054Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$IC5bLkVzbIPE$8R1gNsx3KkoGW5Tw7NgW15AYao8/8sHlJSeKpiYr1oY=",
+        "email": "",
+        "date_joined": "2015-10-28T07:13:45.476Z"
+    },
+    "model": "auth.user",
+    "pk": 3
+},
+{
+    "fields": {
+        "username": "doctor1",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-06T00:03:28.637Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$fvHf3L5cfGFX$C82wP5EuiZIOt7YM5aErUJ1dcHjnAtibbOaUITWTxmA=",
+        "email": "",
+        "date_joined": "2015-10-28T07:15:22.424Z"
+    },
+    "model": "auth.user",
+    "pk": 4
+},
+{
+    "fields": {
+        "username": "datetest@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-10-29T04:45:55.216Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$D89alq3zR3PJ$UQ0cjL2iAWzPjnTsnEFxbeS+37y6K0IEJbiaY9F+od8=",
+        "email": "",
+        "date_joined": "2015-10-29T04:45:51.932Z"
+    },
+    "model": "auth.user",
+    "pk": 5
+},
+{
+    "fields": {
+        "username": "doctor3@doctor3.com",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$D9ykJXpYcfoa$JkwnR3TKTGWRSGxBGaEqad3QyV36joFLcH4yIJ9aLTg=",
+        "email": "",
+        "date_joined": "2015-10-30T04:04:11.681Z"
+    },
+    "model": "auth.user",
+    "pk": 6
+},
+{
+    "fields": {
+        "username": "patient4@patient4.com",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-10-30T04:08:43.864Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$fq7NiM0s1lwI$Lnt7WzI3VfTrX5xq51HONzsBaj0Z6z2ruOAF+IY17DA=",
+        "email": "",
+        "date_joined": "2015-10-30T04:08:40.517Z"
+    },
+    "model": "auth.user",
+    "pk": 7
+},
+{
+    "fields": {
+        "username": "labtech1",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-01T20:01:57.103Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$q6b7bnt7EKbr$dMV/HamjSo2yrDvnJ9kt6V5/WMjUwD4HSCt2Q5pcUDY=",
+        "email": "",
+        "date_joined": "2015-10-31T22:36:55.861Z"
+    },
+    "model": "auth.user",
+    "pk": 8
+},
+{
+    "fields": {
+        "username": "patienttest@patienttest.com",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-01T19:04:29.112Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$0fBCvCyABsLf$4GOH/RsRMzWNPy8GeaS9OQJV5PJSKDwz1lJJ5a/35i8=",
+        "email": "",
+        "date_joined": "2015-11-01T19:04:25.349Z"
+    },
+    "model": "auth.user",
+    "pk": 9
+},
+{
+    "fields": {
+        "username": "doctor_user",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "doctor_user_password",
+        "email": "doctor_user@yahoo.com",
+        "date_joined": "2015-11-01T22:45:40.705Z"
+    },
+    "model": "auth.user",
+    "pk": 10
+},
+{
+    "fields": {
+        "username": "patient_user_1",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "patient_user_1_password",
+        "email": "patient_user_1@yahoo.com",
+        "date_joined": "2015-11-01T22:45:40.713Z"
+    },
+    "model": "auth.user",
+    "pk": 11
+},
+{
+    "fields": {
+        "username": "nurse1",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-02T01:21:50.497Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$QhjTDBDLDhbO$ZJO50lyLBHT9oOftSMvAFNq3OU3Xh8cPPIrWv/Cu6XY=",
+        "email": "",
+        "date_joined": "2015-11-02T01:21:35.933Z"
+    },
+    "model": "auth.user",
+    "pk": 12
+},
+{
+    "fields": {
+        "expire_date": "2015-11-20T04:41:56.272Z",
+        "session_data": "ZWMwOTM0ZGY0NzY0NDkyMThmZTE4NzgzNjAxYzNiMTE3YTk4NTg1Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjkzMDBkNzBiY2Y2MTU2YzBmYjg3ZjA2NWIzMDEwMjYxYjE4OWQyZDIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0="
+    },
+    "model": "sessions.session",
+    "pk": "4ijdxk8m5dzds22izzd21rgy7kz6h4ws"
+},
+{
+    "fields": {
+        "expire_date": "2015-11-11T07:12:46.737Z",
+        "session_data": "N2FkNmFjYmI4ODA4ZWQ3MWY3OTVmNDdlYjk4ZGNkN2RiNDk4NzdmZjp7Il9hdXRoX3VzZXJfaGFzaCI6IjVjNzMyOTEwMDQ1YzdmNzU5NDc2OTE2YjdlNWM3NjE3MDYyNmJlYTQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "ljf2hxt0e55vina32sjivvpc67d59ucf"
+},
+{
+    "fields": {
+        "expire_date": "2015-11-13T04:16:52.222Z",
+        "session_data": "N2FkNmFjYmI4ODA4ZWQ3MWY3OTVmNDdlYjk4ZGNkN2RiNDk4NzdmZjp7Il9hdXRoX3VzZXJfaGFzaCI6IjVjNzMyOTEwMDQ1YzdmNzU5NDc2OTE2YjdlNWM3NjE3MDYyNmJlYTQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "p41dh7cvxv3snn44z3slr4cct3j6kbty"
+},
+{
+    "fields": {
+        "expire_date": "2015-11-16T01:21:50.501Z",
+        "session_data": "NGJkZDQ2ZWZjZjBhOGIyMWFhYjUyNzY3MzZlNTAwNjZhYjc3Njk1ODp7Il9hdXRoX3VzZXJfaGFzaCI6IjZhMGVkMzVmMmExZTdiNDY3NmViYjhlN2E0NjQwZDdiOWM1ZWJkMTQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxMiJ9"
+    },
+    "model": "sessions.session",
+    "pk": "y7lghsspzv1zf7fhw8nbbxp49i1jhbop"
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-28T07:13:00.526Z",
+        "object_repr": "hsp1",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 1
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-28T07:13:12.148Z",
+        "object_repr": "staff",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "permissionsrole"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 2
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-28T07:15:22.536Z",
+        "object_repr": "doctor1",
+        "object_id": "4",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 3
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-28T07:15:27.551Z",
+        "object_repr": "Dr. Ryan Schachte - Gynecologist",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "doctor"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 4
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-28T07:19:39.909Z",
+        "object_repr": "doctor",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "permissionsrole"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 5
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-29T04:52:36.104Z",
+        "object_repr": "datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed approved.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 6
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-29T04:52:39.143Z",
+        "object_repr": "datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed approved.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 7
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T02:18:22.703Z",
+        "object_repr": "datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 8
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T02:19:00.842Z",
+        "object_repr": "patient1@patient1.com",
+        "object_id": "1",
+        "change_message": "Changed created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 9
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T02:19:07.873Z",
+        "object_repr": "datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 10
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T02:19:15.546Z",
+        "object_repr": "datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 11
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T02:39:20.776Z",
+        "object_repr": "date test datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed date_created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "temppatientdata"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 12
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T02:39:26.437Z",
+        "object_repr": "patient1 patient1 patient1@patient1.com",
+        "object_id": "1",
+        "change_message": "Changed date_created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "temppatientdata"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 13
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T02:57:53.114Z",
+        "object_repr": "patient1@patient1.com",
+        "object_id": "1",
+        "change_message": "Changed date_created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 14
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T03:01:37.868Z",
+        "object_repr": "patient1@patient1.com",
+        "object_id": "1",
+        "change_message": "Changed date_created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 15
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-30T03:05:14.183Z",
+        "object_repr": "admin",
+        "object_id": "5",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "permissionsrole"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 16
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T03:15:08.370Z",
+        "object_repr": "datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed date_created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 17
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T03:15:34.972Z",
+        "object_repr": "datetest@gmail.com",
+        "object_id": "2",
+        "change_message": "Changed date_created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 18
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-30T04:04:11.784Z",
+        "object_repr": "doctor3@doctor3.com",
+        "object_id": "6",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 19
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-30T04:04:16.544Z",
+        "object_repr": "doctor",
+        "object_id": "6",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "permissionsrole"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 20
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T04:05:22.655Z",
+        "object_repr": "patient1@patient1.com",
+        "object_id": "1",
+        "change_message": "Changed date_created.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patient"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 21
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-30T04:17:42.522Z",
+        "object_repr": "Dr. Ryan Schachte - Gynecologist",
+        "object_id": "5",
+        "change_message": "Changed resolved.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "patientappt"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 22
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T21:34:32.584Z",
+        "object_repr": "EMedication object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "emedication"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 23
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-31T21:53:50.823Z",
+        "object_repr": "EMedication object",
+        "object_id": "1",
+        "change_message": "Changed reminder.",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "emedication"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 24
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T21:54:29.036Z",
+        "object_repr": "EMedication object",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "emedication"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 25
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T21:54:38.091Z",
+        "object_repr": "EMedication object",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "emedication"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 26
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T22:36:56.037Z",
+        "object_repr": "labtech1",
+        "object_id": "8",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 27
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T22:36:57.838Z",
+        "object_repr": "John Larsen",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "labtech"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 28
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T22:37:13.480Z",
+        "object_repr": "LabReport object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "labreport"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 29
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T23:03:12.246Z",
+        "object_repr": "LabReport object",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "labreport"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 30
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-31T23:10:15.143Z",
+        "object_repr": "lab",
+        "object_id": "8",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "permissionsrole"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 31
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-11-02T01:21:36.047Z",
+        "object_repr": "nurse1",
+        "object_id": "12",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 32
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-11-02T01:21:45.666Z",
+        "object_repr": "nurse",
+        "object_id": "9",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "ipcms",
+            "permissionsrole"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 33
+},
+{
+    "fields": {
+        "date_created": "2013-10-30 03:01:56.",
+        "fill_from_application": 1,
+        "user": [
+            "patient1@patient1.com"
+        ],
+        "alertSent": 0,
+        "approved": 1
+    },
+    "model": "ipcms.patient",
+    "pk": 1
+},
+{
+    "fields": {
+        "date_created": "2015-10-30 04:09:59.923457",
+        "fill_from_application": 3,
+        "user": [
+            "patient4@patient4.com"
+        ],
+        "alertSent": 0,
+        "approved": 1
+    },
+    "model": "ipcms.patient",
+    "pk": 3
+},
+{
+    "fields": {
+        "date_created": "9-20-1995",
+        "fill_from_application": 5,
+        "user": [
+            "patient_user_1"
+        ],
+        "alertSent": 0,
+        "approved": 0
+    },
+    "model": "ipcms.patient",
+    "pk": 5
+},
+{
+    "fields": {
+        "phone_number": "+14804585574",
+        "insurance_policy_number": 234234,
+        "first_name": "patient1",
+        "last_name": "patient1",
+        "ssn": 343234243,
+        "DOB": "4543-02-20",
+        "gender": "other",
+        "age": 23,
+        "address": "none",
+        "data_sent": 1,
+        "insurance_provider": "allstate",
+        "allergies": "none",
+        "race": "hawaiian",
+        "medications": "none",
+        "user": [
+            "patient1@patient1.com"
+        ],
+        "income": "$60,001-$85,000",
+        "email_address": "patient1@patient1.com"
+    },
+    "model": "ipcms.temppatientdata",
+    "pk": 1
+},
+{
+    "fields": {
+        "phone_number": "+14804528825",
+        "insurance_policy_number": 23424234,
+        "first_name": "date",
+        "last_name": "test",
+        "ssn": 233322333,
+        "DOB": "4543-02-20",
+        "gender": "male",
+        "age": 18,
+        "address": "none",
+        "data_sent": 1,
+        "insurance_provider": "none",
+        "allergies": "none",
+        "race": "white",
+        "medications": "none",
+        "user": [
+            "datetest@gmail.com"
+        ],
+        "income": "Prefer Not To Say",
+        "email_address": "datetest@gmail.com"
+    },
+    "model": "ipcms.temppatientdata",
+    "pk": 2
+},
+{
+    "fields": {
+        "phone_number": "+14804585574",
+        "insurance_policy_number": 3333332323,
+        "first_name": "patient4",
+        "last_name": "patient4",
+        "ssn": 444444,
+        "DOB": "1995-02-20",
+        "gender": "prefer not to say",
+        "age": 55,
+        "address": "none",
+        "data_sent": 1,
+        "insurance_provider": "none",
+        "allergies": "none",
+        "race": "hawaiian",
+        "medications": "none",
+        "user": [
+            "patient4@patient4.com"
+        ],
+        "income": "$110,001+",
+        "email_address": "patient4@patient4.com"
+    },
+    "model": "ipcms.temppatientdata",
+    "pk": 3
+},
+{
+    "fields": {
+        "phone_number": "+14804585574",
+        "insurance_policy_number": 234234234,
+        "first_name": "Ryan",
+        "last_name": "Larsen",
+        "ssn": 500493393,
+        "DOB": "1294-02-20",
+        "gender": "male",
+        "age": 18,
+        "address": "23423 e larel dr.",
+        "data_sent": 1,
+        "insurance_provider": "Allstate",
+        "allergies": "None",
+        "race": "white",
+        "medications": "Zyrtec",
+        "user": [
+            "patienttest@patienttest.com"
+        ],
+        "income": "Prefer Not To Say",
+        "email_address": "patienttest@patienttest.com"
+    },
+    "model": "ipcms.temppatientdata",
+    "pk": 4
+},
+{
+    "fields": {
+        "phone_number": null,
+        "insurance_policy_number": 19938343434,
+        "first_name": "Ryan",
+        "last_name": "Schachte",
+        "ssn": 600489139,
+        "DOB": null,
+        "gender": "Select a gender",
+        "age": 18,
+        "address": "2463 E. Mallory Dr. Tempe, AZ 85281",
+        "data_sent": 1,
+        "insurance_provider": "Allstate",
+        "allergies": "NONE",
+        "race": "white",
+        "medications": "NONE",
+        "user": [
+            "patient_user_1"
+        ],
+        "income": "$0-$10,000",
+        "email_address": "johnson@johnson.com"
+    },
+    "model": "ipcms.temppatientdata",
+    "pk": 5
+},
+{
+    "fields": {
+        "role": "staff",
+        "user": [
+            "hsp1"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 1
+},
+{
+    "fields": {
+        "role": "patient",
+        "user": [
+            "patient1@patient1.com"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 2
+},
+{
+    "fields": {
+        "role": "doctor",
+        "user": [
+            "doctor1"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 3
+},
+{
+    "fields": {
+        "role": "patient",
+        "user": [
+            "datetest@gmail.com"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 4
+},
+{
+    "fields": {
+        "role": "admin",
+        "user": [
+            "admin"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 5
+},
+{
+    "fields": {
+        "role": "doctor",
+        "user": [
+            "doctor3@doctor3.com"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 6
+},
+{
+    "fields": {
+        "role": "patient",
+        "user": [
+            "patient4@patient4.com"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 7
+},
+{
+    "fields": {
+        "role": "lab",
+        "user": [
+            "labtech1"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 8
+},
+{
+    "fields": {
+        "role": "nurse",
+        "user": [
+            "nurse1"
+        ]
+    },
+    "model": "ipcms.permissionsrole",
+    "pk": 9
+},
+{
+    "fields": {
+        "lab_user": [
+            "labtech1"
+        ],
+        "lab_first_name": "John",
+        "lab_last_name": "Larsen"
+    },
+    "model": "ipcms.labtech",
+    "pk": 1
+},
+{
+    "fields": {
+        "doctor_user": [
+            "doctor1"
+        ],
+        "doctor_first_name": "ryan",
+        "doctor_last_name": "schachte",
+        "doctor_type": "Gynecologist"
+    },
+    "model": "ipcms.doctor",
+    "pk": 1
+},
+{
+    "fields": {
+        "doctor_user": [
+            "doctor_user"
+        ],
+        "doctor_first_name": "john",
+        "doctor_last_name": "stamos",
+        "doctor_type": "Gynecologist"
+    },
+    "model": "ipcms.doctor",
+    "pk": 2
+}
+]

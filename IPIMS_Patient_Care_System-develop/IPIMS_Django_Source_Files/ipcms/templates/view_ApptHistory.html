@@ -1,0 +1,56 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+
+<br><br>
+<center><h1>View Appointments History</h1></center>
+<hr>
+
+{% if user.is_authenticated %}
+
+<center>
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+
+	<!-- Table Header -->
+	<thead>
+		<tr>
+			<th>Doctor &amp; Speciality</th>
+			<th>Summary</th>
+			<th>Date &amp; Time</th>
+
+		</tr>
+	</thead>
+	<!-- Table Header -->
+
+	<!-- Table Body -->
+	<tbody>
+		{% for appts in current_appts_list %}
+			<tr>
+				<td>{{appts.doctor|title}}</td>
+				<td>
+				{{appts.medical_conditions|title}}
+				</td>
+				<td>{{appts.date}}</td>
+
+			</tr>
+		{% endfor %}
+<!-- 		<tr class="even">
+			<td><a href="#yep-iit-doesnt-exist">Hyperlink 	Example</a></td>
+			<td>80%</td>
+			<td><a href="#inexistent-id">Another</a></td>
+		</tr> -->
+
+	</tbody>
+	<!-- Table Body -->
+
+</table>
+</center>
+
+
+
+{% endif %}
+
+{% endblock %}

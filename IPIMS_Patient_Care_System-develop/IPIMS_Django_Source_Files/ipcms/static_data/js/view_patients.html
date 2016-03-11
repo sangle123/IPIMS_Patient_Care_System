@@ -1,0 +1,22 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+{% if roles.role == 'doctor' %}
+<center><h1>View My Patients</h1></center>
+{% elif roles.role == 'hsp' %}
+<center><h1>View All Patients</h1></center>
+{% endif %}
+
+
+
+
+{% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends '_layouts/base.html' %}
+{% load staticfiles %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extension %} <link href="{% static 'css/displaybox.css' %}" rel="stylesheet">{% endblock %}
+{% block content %}
+
+<center><h1>Emergency Alerts Page</h1></center>
+
+{% if user.is_authenticated and roles.role == "doctor" or roles.role == "hsp" %}
+	<h4><b>{{alerts_count}} Emergency Alert(s)!</b></h4>
+	<hr>
+	<div class="row">
+		{% for alert in alerts %}
+			<div class="col-md-12">
+				<div class="box4" id = "pullleft2">
+					<h3 style="color:#FF6666">EMERGENCY CARD</h3><hr color="red">
+				  	{{alert.alert_patient.user.username|title}} has an alert level of {{alert.alert_level}}!
+				  	<hr>
+				  	Description: {{alert.alert_description}}
+				  	<hr>
+				  	<!-- <a href="/accounts/portal/medical_history">Click To View Patient Case</a> -->
+				  	<!--<b>View Patient Case:</b> -->
+				         <!-- <input type="submit" value ="View Medical History"<a href="/accounts/portal/medical_history">Click Here</a><hr> -->
+				         <form method ="POST" action='/accounts/portal/medical_history'>
+				         	{% csrf_token %}
+				         	<input type="submit" class="resolver" value="Medical History">
+				         	<input type="hidden" name="pk_patient" value={{alert.alert_patient.pk}}>
+				         </form>
+				  	<hr>
+
+					    <form id ="checker{{appts.pk}}" method = "POST" action='/accounts/portal/admin/remove_alert'>
+					    {% csrf_token %}
+						<input type="submit" class="resolver" value="Click To Resolve"><i class="icon-chevron-right"></i></a>
+							<input type="hidden" name="removal" value={{alert.alert_patient.pk}}>
+						</form>
+
+
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endif %}
+
+{% endblock %}

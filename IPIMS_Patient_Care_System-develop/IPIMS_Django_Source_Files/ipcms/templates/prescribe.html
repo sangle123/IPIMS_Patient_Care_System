@@ -1,0 +1,33 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block extension %}
+
+	<script type = "text/javascript">
+		function printDiv() {
+
+			window.print();
+		}
+	</script>
+
+
+{% endblock %}
+
+{% block content %}
+
+	<center><h1>E-Prescribe Medication</h1></center>
+	<a class="btn btn-blue" onclick="printDiv()">Print Prescription</a>
+
+	{% if user.is_authenticated %}
+	<div class="col-sm-12">
+		<form method ='POST' action=''>
+			{% csrf_token %}
+			{{ form|crispy }}
+			<input type="submit" value="prescribe" class="btn default"/>
+		</form>
+		<br>
+	</div>
+	{% endif %}
+
+{% endblock %}

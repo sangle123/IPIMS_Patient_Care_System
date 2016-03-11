@@ -1,0 +1,72 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+
+<br><br>
+<center><h1>View Appointments</h1></center>
+<hr>
+
+{% if user.is_authenticated %}
+
+<center>
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+
+	<!-- Table Header -->
+	<thead>
+		<tr>
+			<th>Doctor &amp; Speciality</th>
+			<th>Summary</th>
+			<th>Date &amp; Time</th>
+			<th>Edit</th>
+			<th>Cancel</th>
+		</tr>
+	</thead>
+	<!-- Table Header -->
+
+	<!-- Table Body -->
+	<tbody>
+		{% for appts in current_appts_list %}
+		{% if appts.resolved == 0 %}
+			<tr>
+
+				<td>{{appts.doctor|title}}</td>
+				<td>
+				{{appts.medical_conditions|title}}
+				</td>
+				<td>{{appts.date}}</td>
+				<td>
+
+					<form action="{% url 'PatientReviseAppointmentView' %}" method="POST">
+							{% csrf_token %}
+
+							<input type="hidden" name="current_appt_pk" value="{{appts.pk}}">
+							<input type="hidden" name="current_patient_pk" value="{{current_patient.pk}}">
+							<input type="submit" value="Revise" />
+					</form>
+
+				</td>
+				<td>
+					<form action="{% url 'delete' appts.id %}" method="POST">
+							{% csrf_token %}
+							<input type="submit" value="Cancel" />
+					</form>
+				</td>
+
+			</tr>
+		{% endif %}
+		{% endfor %}
+
+	</tbody>
+	<!-- Table Body -->
+
+</table>
+</center>
+
+
+
+{% endif %}
+
+{% endblock %}

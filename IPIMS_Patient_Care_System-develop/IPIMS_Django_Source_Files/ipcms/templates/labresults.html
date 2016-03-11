@@ -1,0 +1,41 @@
+{% extends '_layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block extension %}
+
+	<script type = "text/javascript">
+		function printDiv() {
+
+			window.print();
+		}
+	</script>
+
+
+{% endblock %}
+
+{% block content %}
+
+	<center><h1>View Patient Lab Results</h1></center>
+
+	<a class="btn btn-blue" onclick="printDiv()">Print Lab Reports</a>
+
+	{% if user.is_authenticated %}
+		<div class="col-sm-12">
+			<h3>{{current_patient.fill_from_application.first_name|title}} {{current_patient.fill_from_application.last_name|title}} Results</h3><hr>
+
+			{% for results in patient_lab_results %}
+			<h5>
+				<b>Your Lab Results Are:</b> {{results.lab_results|title}}<br>
+				<b>The Test Ran Was:</b> {{results.lab_test|title}}<br>
+				<b>Lab Notes:</b> {{results.lab_notes|title}}<br>
+				<b>The Test Was Ran By:</b> {{results.lab_tech|title}}<br>
+			</h5>
+			<hr>
+
+			{% endfor %}
+
+		</div>
+	{% endif %}
+
+
+{% endblock %}

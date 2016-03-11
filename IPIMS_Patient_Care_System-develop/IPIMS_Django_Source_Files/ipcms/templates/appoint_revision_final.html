@@ -1,0 +1,55 @@
+{% extends '_layouts/base.html' %}
+
+
+{% block extension %}
+
+
+
+{% endblock %}
+
+{% block content %}
+
+	<center><h1>Revise Your Appointment</h1></center>
+	{{patient_search_key}}
+	{{patient_appt_key}}
+
+	{% if user.is_authenticated %}
+		<div class="col-sm-12">
+
+			 <form action="/send_appt_update/" method="POST">
+			 {% csrf_token %}
+
+			 <span id = "pull_left">Select Doctor:</span>
+			 	 <select class="form-control">
+			 	 	<option selected="selected" value="{{appt_doctor.doctor_first_name}}">Dr. {{appt_doctor.doctor_first_name}}</option>
+
+			 	 {% for docs in all_doctors %}
+				  	<option value="{{docs}}">{{docs}}</option>
+				  	<input type="hidden" name="chosen_doctor" value="{{docs.pk}}">
+				 {% endfor %}
+
+				</select> 
+				<span id = "pull_left">Appointment Date:</span> <input type = "text" name = "appt_date" value="{{appt_date}}" id ="id_date" class="form-control"></input>
+
+				<span id = "pull_left">Pain Level:</span> <input type = "text" name = "appt_pain_level" value="{{appt_pain_level}}" class="form-control"></input>
+
+				<span id = "pull_left">Allergies:</span> <input type = "text" name = "appt_allergies" value="{{appt_allergies}}" class="form-control"></input>
+
+				<span id = "pull_left">Medical Conditions:</span> <input type = "text" name = "appt_medical_conditions" value="{{appt_medical_conditions}}" class="form-control"></input>
+
+				<input type="hidden" name="current_patient_pk" value={{patient_search_key}}>
+				<input type="hidden" name="current_appt_pk" value={{patient_appt_key}}>
+
+			  <input type="submit" class = "btn btn-default" value="Submit">
+			</form> 
+		</div>
+	{% endif %}
+
+	<script type="text/javascript">
+		$(function(){
+			$('*[id=id_date]').appendDtpicker();
+		});
+	</script>
+
+
+{% endblock %}

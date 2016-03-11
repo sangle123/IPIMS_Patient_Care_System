@@ -1,0 +1,40 @@
+{% extends '_layouts/base.html' %}
+
+
+{% block content %}
+
+<h1>View All Patient Data</h1>
+
+	<div class="row">
+		{% for item in temp_user_data %}
+			<div class="box10 col-sm-10">
+			  <h5><center>IPIMS Identification Card</center></h5>
+
+			       <h1>{{item.fill_from_application.first_name|title}} {{item.fill_from_application.last_name|title}}</h1>   
+			       <form action = "/delete/" method="POST">
+			       	{% csrf_token %}
+			       	<input type="hidden" name="pk" value="{{item.id}}">
+			       	<button type="submit">Delete {{item.fill_from_application.first_name|title}} {{item.fill_from_application.last_name|title}}</button>
+			       </form>
+
+			       <img src="http://4.bp.blogspot.com/-zsbDeAUd8aY/US7F0ta5d9I/AAAAAAAAEKY/UL2AAhHj6J8/s1600/facebook-default-no-profile-pic.jpg">
+			          <p>
+			         <b>E-Mail Address:</b> {{item.fill_from_application.email_address}}<br>
+			         <b>Address:</b> {{item.fill_from_application.address}}<br>
+			         <b>SSN:</b> ***-**-****</br>
+			         <b>Phone Number:</b> {{item.fill_from_application.phone_number}}<br>
+			         <b>DOB: </b>{{item.fill_from_application.DOB}}<br>
+			         <b>Insurance Provider: </b>{{item.fill_from_application.insurance_provider}}<br>
+			         <b>Policy Number:</b> {{item.fill_from_application.insurance_policy_number}}<br>
+			        <p>    
+			       <br />
+			       <b><a href="#">Update Your IPIMS Contact Card</a></b>
+			</div>
+		{% endfor %}
+	</div>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,21 @@
+
+<!-- Will load the base html template to lessen the repeated code on each page. -->
+
+{% extends '_layouts/base.html' %}
+
+{% block headline %}IPCMS Testing Setup<br>{% endblock %}
+
+{% block content %}
+<hr><h2>HOME_PAGE</h2>
+{% if user.is_authenticated %}
+
+	Hello, {{ user.username }} !
+
+{% else %}
+<br><br>
+<h1 class="warning">You are not currently logged in.</h2>
+
+{% endif %}
+
+
+{% endblock %}
